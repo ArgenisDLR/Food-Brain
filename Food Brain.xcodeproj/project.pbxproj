@@ -15,6 +15,7 @@
 		4DDB8B492385FC970047FF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DDB8B472385FC970047FF4F /* LaunchScreen.storyboard */; };
 		4DDB8B542385FC970047FF4F /* Food_BrainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB8B532385FC970047FF4F /* Food_BrainTests.swift */; };
 		4DDB8B5F2385FC980047FF4F /* Food_BrainUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB8B5E2385FC980047FF4F /* Food_BrainUITests.swift */; };
+		4DDB8B6D2385FCD80047FF4F /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB8B6C2385FCD80047FF4F /* Inceptionv3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4DDB8B5A2385FC980047FF4F /* Food BrainUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Food BrainUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDB8B5E2385FC980047FF4F /* Food_BrainUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_BrainUITests.swift; sourceTree = "<group>"; };
 		4DDB8B602385FC980047FF4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DDB8B6C2385FCD80047FF4F /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				4DDB8B452385FC970047FF4F /* Assets.xcassets */,
 				4DDB8B472385FC970047FF4F /* LaunchScreen.storyboard */,
 				4DDB8B4A2385FC970047FF4F /* Info.plist */,
+				4DDB8B6C2385FCD80047FF4F /* Inceptionv3.mlmodel */,
 			);
 			path = "Food Brain";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DDB8B412385FC950047FF4F /* ViewController.swift in Sources */,
+				4DDB8B6D2385FCD80047FF4F /* Inceptionv3.mlmodel in Sources */,
 				4DDB8B3D2385FC950047FF4F /* AppDelegate.swift in Sources */,
 				4DDB8B3F2385FC950047FF4F /* SceneDelegate.swift in Sources */,
 			);
