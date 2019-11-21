@@ -10,7 +10,7 @@ import UIKit
 import CoreML
 import Vision
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -20,7 +20,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
     }
     
@@ -28,13 +27,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if let userImagePicked = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = userImagePicked
+            
+            guard let ciImage = try? CIImage(image: userImagePicked) else {
+                fatalError("Loading not happening")
+            }
         }
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
+    func detect(image: CIImage) {
+        
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
+            fatalError("This one did not work")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let results = request.results as? [VNClassificationObservation] else {
+                fatalError("this message has failed")
+            }
+            
+            print(results)
+        }
+
+    }
+    
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func photoLibraryTapped(_ sender: UIBarButtonItem) {
+        imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
     
