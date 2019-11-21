@@ -10,7 +10,7 @@ import UIKit
 import CoreML
 import Vision
 
-class ViewController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -21,19 +21,6 @@ class ViewController: UIViewController, UITabBarDelegate, UIImagePickerControlle
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let userImagePicked = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = userImagePicked
-            
-            guard let ciImage = try? CIImage(image: userImagePicked) else {
-                fatalError("Loading not happening")
-            }
-        }
-        
-        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     func detect(image: CIImage) {
@@ -49,8 +36,10 @@ class ViewController: UIViewController, UITabBarDelegate, UIImagePickerControlle
             
             print(results)
         }
-
+        
     }
+    
+    // MARK: - Navigation Bar Button Items
     
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
@@ -66,3 +55,21 @@ class ViewController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     
 }
 
+// MARK: - Image Picker Delegates 
+
+extension ViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let userImagePicked = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = userImagePicked
+            
+            guard let ciImage = try? CIImage(image: userImagePicked) else {
+                fatalError("Loading not happening")
+            }
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+}
